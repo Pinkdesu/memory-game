@@ -1,7 +1,7 @@
 import React from "react";
 import "./start-window-style.scss";
 
-const StartWindow = () => {
+const StartWindow = ({ startGame }) => {
   return (
     <div className="start-window-wrapper">
       <div className="content">
@@ -20,7 +20,7 @@ const StartWindow = () => {
             <li>Игра заканчивается когда все пары карт найдены.</li>
           </ul>
         </div>
-        <button>Начать</button>
+        <button onClick={startGame}>Начать</button>
       </div>
     </div>
   );

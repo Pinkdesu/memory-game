@@ -7,13 +7,17 @@ import StartWindow from "../start-window/start-window";
 const Table = () => {
   const [startWindowActive, setActive] = useState(true);
 
+  const startGame = () => {
+    setActive(!startWindowActive);
+  };
+
   return (
     <div className="table-wrapper">
       <Timer />
 
       <Board />
 
-      {startWindowActive && <StartWindow />}
+      {startWindowActive && <StartWindow startGame={startGame} />}
     </div>
   );
 };

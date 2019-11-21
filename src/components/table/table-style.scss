@@ -9,5 +9,8 @@
     left: 50%;
     top: 100px;
     margin-left: -400px;
-    background-color: lightgray;
+    background-image: url('/table-back.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
 }

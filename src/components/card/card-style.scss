@@ -1,0 +1,45 @@
+@import '../../module';
+
+.card-wrapper {
+    position: relative;
+    perspective: 1000px;
+    width: 60px;
+    height: 80px;
+
+    %general-style {
+        @include flex-constructor(row nowrap, center, center);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        transition: 1s;
+        backface-visibility: hidden;
+    }
+
+    .front {
+        @extend %general-style;
+
+        img {
+            max-width: 100%;
+            min-width: 100%;
+            height: auto;
+            border: 1px solid #fff;
+        }
+    }
+
+    .front-active {
+        transform: rotateY(180deg);
+    }
+
+    .back {
+        @extend %general-style;
+        background-color: #fff;
+        transform: rotateY(180deg);
+    }
+
+    .back-active {
+        transform: rotateY(360deg);
+        border: 1px solid #fff;
+    }
+}

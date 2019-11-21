@@ -1,5 +1,9 @@
 @import '../../module';
 
 .timer-wrapper {
-    grid-area: timer;
+    @include flex-constructor(row nowrap, center, center);
+    width: 200px;
+    font-size: 80px;
+    padding: 10px;
+    color: rgba(#fff, 0.5);
 }
