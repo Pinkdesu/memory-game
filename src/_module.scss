@@ -1,0 +1,19 @@
+@mixin flex-constructor ($flow: row nowrap, $jusCont: flex-start, $alItems: stretch, $alContent:stretch) {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    flex-flow: $flow;
+    justify-content: $jusCont;
+    align-items: $alItems;
+    align-content: $alContent;
+}
+
+%cursor-pointer {
+    cursor: default;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
