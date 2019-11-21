@@ -1,9 +1,8 @@
 import { INIT_GAME } from "../constants";
 
 export const initGame = cards => {
-  // const formattedCards = cards.reduce((acc, current) => {
-  //   return { ...acc, [current.id]: current };
-  // }, {});
+  cards.sort(() => 0.5 - Math.random());
+
   return {
     type: INIT_GAME,
     payload: cards
