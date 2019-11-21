@@ -4,8 +4,13 @@ import "./card-style.scss";
 const Card = ({ cardObject }) => {
   const [isActive, setActive] = useState(false);
 
+  const handleClick = () => {
+    setActive(!isActive);
+    console.log(cardObject.id);
+  };
+
   return (
-    <div className="card-wrapper" onClick={() => setActive(!isActive)}>
+    <div className="card-wrapper" onClick={handleClick}>
       <div className={isActive ? "front front-active" : "front"}>
         <img src="card-back.jpg" alt="" />
       </div>
@@ -15,4 +20,4 @@ const Card = ({ cardObject }) => {
     </div>
   );
 };
-export default Card;
+export default React.memo(Card);

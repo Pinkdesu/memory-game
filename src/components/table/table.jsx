@@ -1,21 +1,29 @@
 import React, { useState } from "react";
-import "./table-style.scss";
+import { useDispatch } from "react-redux";
+import { CARD_ARRAY } from "../../constants";
+import { initGame } from "../../actions/initGame";
 import Board from "../board/board";
 import Timer from "../timer/timer";
 import StartWindow from "../start-window/start-window";
+import "./table-style.scss";
 
 const Table = () => {
   const [startWindowActive, setActive] = useState(true);
+  const dispatch = useDispatch();
 
   const startGame = () => {
+    dispatch(initGame(CARD_ARRAY));
     setActive(!startWindowActive);
   };
 
   return (
     <div className="table-wrapper">
-      <Timer />
-
-      <Board />
+      {!startWindowActive && (
+        <>
+          <Timer />
+          <Board />
+        </>
+      )}
 
       {startWindowActive && <StartWindow startGame={startGame} />}
     </div>

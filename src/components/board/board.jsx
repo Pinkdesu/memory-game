@@ -1,11 +1,16 @@
 import React from "react";
-import "./board-style.scss";
+import { useSelector } from "react-redux";
 import Card from "../card/card";
+import "./board-style.scss";
 
 const Board = () => {
+  const cardsOnBoard = useSelector(state => state.cardsOnBoard);
+
   return (
     <div className="board-wrapper">
-      <Card cardObject={{ id: 1 }} />
+      {cardsOnBoard.map(cardObject => (
+        <Card key={cardObject.id} cardObject={cardObject} />
+      ))}
     </div>
   );
 };

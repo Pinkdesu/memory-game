@@ -2,11 +2,10 @@
 
 .board-wrapper {
     display: grid;
-    grid-area: board;
     height: 600px;
     width: 600px;
-    grid-template-rows: repeat(1fr, 6);
-    grid-template-columns: repeat(1fr, 6);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 5px;
     padding: 10px;
 }
