@@ -9,7 +9,7 @@ const StartWindow = ({ startGame }) => {
 
         <div className="lid">
           <p>Правила игры:</p>
-          <ul>
+          <ol>
             <li>При нажатии на кнопку “старт” запускается таймер.</li>
             <li>
               По нажатию на карточку она открывается, в течении 5 сек нужно
@@ -18,7 +18,7 @@ const StartWindow = ({ startGame }) => {
               закрываются.
             </li>
             <li>Игра заканчивается когда все пары карт найдены.</li>
-          </ul>
+          </ol>
         </div>
         <button onClick={startGame}>Начать</button>
       </div>

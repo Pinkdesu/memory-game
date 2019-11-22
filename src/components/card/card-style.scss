@@ -2,9 +2,13 @@
 
 .card-wrapper {
     position: relative;
+    overflow: visible;
+    opacity: 1;
+    transition: overflow, opacity 1s linear;
     perspective: 1000px;
     width: 60px;
     height: 80px;
+
 
     %general-style {
         @include flex-constructor(row nowrap, center, center);
@@ -42,4 +46,9 @@
         transform: rotateY(360deg);
         border: 1px solid #fff;
     }
+}
+
+.hidden {
+    overflow: hidden;
+    opacity: 0;
 }

@@ -1,30 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCard, removeCard } from "../../actions/active-card";
+import { addCard, removeCard, setTimer } from "../../actions/active-cards";
+import { toggleCard } from "../../actions/all-cards";
 import "./card-style.scss";
 
 const Card = ({ cardObject }) => {
-  const [isActive, setActive] = useState(false);
+  const activeCards = useSelector(state => state.activeCards);
   const dispatch = useDispatch();
-  const activeCard = useSelector(state => state.activeCard);
 
   const handleClick = () => {
-    if (activeCard.isEmpty) {
+    if (!cardObject.isActive && activeCards.length < 2) {
+      dispatch(toggleCard(cardObject.id, true));
       dispatch(addCard(cardObject));
-      setActive(true);
-      setTimeout(() => {
-        setActive(false);
-        dispatch(removeCard());
-      }, 1000);
+
+      const timer = setTimeout(() => {
+        dispatch(toggleCard(cardObject.id, false));
+        dispatch(removeCard(cardObject.id));
+      }, 5000);
+
+      dispatch(setTimer(cardObject.id, timer));
     }
   };
 
   return (
-    <div className="card-wrapper" onClick={handleClick}>
-      <div className={isActive ? "front front-active" : "front"}>
+    <div
+      className={cardObject.isHidden ? "card-wrapper hidden" : "card-wrapper"}
+      onClick={handleClick}
+    >
+      <div className={cardObject.isActive ? "front front-active" : "front"}>
         <img src="card-back.jpg" alt="" />
       </div>
-      <div className={isActive ? "back back-active" : "back"}>
+      <div className={cardObject.isActive ? "back back-active" : "back"}>
         {cardObject.value}
       </div>
     </div>
