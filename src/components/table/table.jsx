@@ -1,25 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { CARD_ARRAY } from "../../constants";
 import { initGame } from "../../actions/initGame";
+import { setToZero } from "../../actions/session";
 import Board from "../board/board";
 import Timer from "../timer/timer";
 import StartWindow from "../start-window/start-window";
+import EndWindow from "../end-window/end-window";
 import "./table-style.scss";
-import { toggleCards } from "../../actions/all-cards";
 
 const Table = () => {
-  const [startWindowActive, setActive] = useState(true);
+  const [startWindowActive, start] = useState(true);
+  const [endWindowActive, end] = useState(false);
   const dispatch = useDispatch();
+  const session = useSelector(state => state.session);
 
   const startGame = () => {
     dispatch(initGame(CARD_ARRAY));
-    setActive(!startWindowActive);
+    start(!startWindowActive);
   };
+
+  const showEndWindow = useCallback(() => {
+    end(!endWindowActive);
+  }, [endWindowActive]);
+
+  useEffect(() => {
+    if (session.points === 1) showEndWindow();
+  }, [session, showEndWindow]);
 
   return (
     <div className="table-wrapper">
-      {!startWindowActive && (
+      {!startWindowActive && !endWindowActive && (
         <>
           <Timer />
           <Board />
@@ -27,6 +38,8 @@ const Table = () => {
       )}
 
       {startWindowActive && <StartWindow startGame={startGame} />}
+
+      {endWindowActive && <EndWindow showEndWindow={showEndWindow} />}
     </div>
   );
 };

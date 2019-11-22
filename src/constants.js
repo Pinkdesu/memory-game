@@ -6,6 +6,8 @@ export const ADD_CARD = "ADD_CARD";
 export const REMOVE_CARD = "REMOVE_CARD";
 export const REMOVE_CARDS = "REMOVE_CARDS";
 export const SET_TIMER = "SET_TIMER";
+export const ADD_POINT = "ADD_POINT";
+export const SET_TO_ZERO = "SET_TO_ZERO";
 export const CARD_ARRAY = [
   {
     id: 1,

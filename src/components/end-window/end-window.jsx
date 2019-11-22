@@ -1,11 +1,21 @@
 import React from "react";
-import "./start-window-style.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { setToZero } from "../../actions/session";
+import "./end-window-style.scss";
 
-const StartWindow = ({ startGame }) => {
+const EndWindow = ({ showEndWindow }) => {
+  const dispatch = useDispatch();
+  const session = useSelector(state => state.session);
+
+  const handleClick = () => {
+    dispatch(setToZero());
+    showEndWindow();
+  };
+
   return (
-    <div className="start-window-wrapper">
+    <div className="end-window-wrapper">
       <div className="content">
-        <h1>Memory Game</h1>
+        <h1>Ваше время: {session.time}</h1>
 
         <div className="lid">
           <p>Правила игры:</p>
@@ -20,9 +30,9 @@ const StartWindow = ({ startGame }) => {
             <li>Игра заканчивается когда все пары карт найдены.</li>
           </ol>
         </div>
-        <button onClick={startGame}>Старт</button>
+        <button onClick={handleClick}>Начать заного</button>
       </div>
     </div>
   );
 };
-export default StartWindow;
+export default EndWindow;

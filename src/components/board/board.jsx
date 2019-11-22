@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "../card/card";
 import { removeCards, hideCards } from "../../actions/active-cards";
 import { toggleCards, toggleCard } from "../../actions/all-cards";
+import { addPoint } from "../../actions/session";
 import "./board-style.scss";
 
 const Board = () => {
@@ -22,6 +23,7 @@ const Board = () => {
       setTimeout(() => {
         if (activeCards[0].value === activeCards[1].value) {
           dispatch(hideCards(activeCards[0].id, activeCards[1].id));
+          dispatch(addPoint());
         } else {
           dispatch(toggleCard(activeCards[0].id, false));
           dispatch(toggleCard(activeCards[1].id, false));
