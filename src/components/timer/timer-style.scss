@@ -2,7 +2,6 @@
 
 .timer-wrapper {
     @include flex-constructor(row nowrap, center, center);
-    width: 200px;
     font-size: 80px;
     padding: 10px;
     color: rgba(#fff, 0.5);

@@ -33,6 +33,7 @@ const Board = () => {
     }
   }, [activeCards, dispatch]);
 
+  console.log("board");
   return (
     <div className="board-wrapper">
       {cardsOnBoard.map(cardObject => (

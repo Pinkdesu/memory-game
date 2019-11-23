@@ -3,6 +3,7 @@ import * as types from "../constants";
 const initialState = {
   playerName: "",
   value: "00:00:00",
+  reset: () => {},
   points: 0,
   isLaunched: false
 };
@@ -22,10 +23,10 @@ const session = (state = initialState, { type, payload }) => {
       };
     case types.ADD_POINT:
       return { ...state, points: state.points + 1 };
-    case types.SET_TIME:
+    case types.SET_STOPWATCH:
       return {
         ...state,
-        value: payload
+        ...payload
       };
     case types.CLEAR_SESSION:
       return { ...initialState, playerName: state.playerName };

@@ -8,6 +8,9 @@ body {
   background-color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('/table-back.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 
   & code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

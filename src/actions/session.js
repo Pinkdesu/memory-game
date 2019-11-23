@@ -13,9 +13,12 @@ export const addPoint = () => ({
   type: types.ADD_POINT
 });
 
-export const setTime = value => ({
-  type: types.SET_TIME,
-  payload: value
+export const setStopWatch = (value, reset) => ({
+  type: types.SET_STOPWATCH,
+  payload: {
+    value: value,
+    reset: reset
+  }
 });
 
 export const clearSession = () => ({

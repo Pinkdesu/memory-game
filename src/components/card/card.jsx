@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, removeCard, setTimer } from "../../actions/active-cards";
 import { toggleCard } from "../../actions/all-cards";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./card-style.scss";
 
 const Card = ({ cardObject }) => {
@@ -21,7 +22,7 @@ const Card = ({ cardObject }) => {
       dispatch(setTimer(cardObject.id, timer));
     }
   };
-
+  console.log("card");
   return (
     <div
       className={cardObject.isHidden ? "card-wrapper hidden" : "card-wrapper"}
@@ -31,7 +32,11 @@ const Card = ({ cardObject }) => {
         <img src="card-back.jpg" alt="" />
       </div>
       <div className={cardObject.isActive ? "back back-active" : "back"}>
-        {cardObject.value}
+        <FontAwesomeIcon
+          icon={cardObject.image}
+          color={cardObject.color}
+          size="2x"
+        />
       </div>
     </div>
   );

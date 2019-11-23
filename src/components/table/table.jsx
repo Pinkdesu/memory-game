@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CARD_ARRAY } from "../../constants";
 import { addAllCards } from "../../actions/all-cards";
-import { startGame, finishGame } from "../../actions/session";
+import { startGame, finishGame, setStopWatch } from "../../actions/session";
 import { addToRating } from "../../actions/rating";
+import { useStopwatch } from "react-timer-hook";
 import Board from "../board/board";
 import Timer from "../timer/timer";
 import StartWindow from "../start-window/start-window";
@@ -11,28 +12,40 @@ import EndWindow from "../end-window/end-window";
 import "./table-style.scss";
 
 const Table = () => {
-  const [startWindowActive, start] = useState(true);
+  const [startWindowActive, handleClick] = useState(true);
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
+  const { seconds, minutes, hours, start, reset } = useStopwatch();
+
+  let timeValue =
+    (hours ? (hours > 9 ? hours : "0" + hours) : "00") +
+    ":" +
+    (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") +
+    ":" +
+    (seconds > 9 ? seconds : "0" + seconds);
+
+  useEffect(() => {
+    if (session.points === 1 && session.isLaunched) {
+      reset();
+      dispatch(setStopWatch(timeValue));
+      dispatch(finishGame());
+      dispatch(addToRating(session.playerName, session.value));
+    }
+  }, [dispatch, session, timeValue, reset]);
 
   const initGame = (player = session.player) => {
     dispatch(startGame(player));
     dispatch(addAllCards(CARD_ARRAY));
-    if (startWindowActive) start(false);
+    start();
+    if (startWindowActive) handleClick(false);
   };
 
-  useEffect(() => {
-    if (session.points === 1 && session.isLaunched) {
-      dispatch(finishGame());
-      dispatch(addToRating(session.playerName, session.value));
-    }
-  }, [dispatch, session]);
-
+  console.log("table");
   return (
     <div className="table-wrapper">
       {!startWindowActive && session.isLaunched && (
         <>
-          <Timer />
+          <Timer timeValue={timeValue} />
           <Board />
         </>
       )}

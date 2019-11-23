@@ -39,14 +39,15 @@
     }
 
     .back {
+        @include flex-constructor(row nowrap, center, center);
         @extend %general-style;
         background-color: #fff;
+        border: 1px solid #fff;
         transform: rotateY(180deg);
     }
 
     .back-active {
         transform: rotateY(360deg);
-        border: 1px solid #fff;
     }
 }
 
