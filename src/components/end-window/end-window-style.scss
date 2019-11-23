@@ -1,14 +1,15 @@
 @import '../../module';
 
 .end-window-wrapper {
-    @include flex-constructor(row nowrap, center, center);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    background-color: rgba(#000, 0.8);
+    @include flex-constructor(row nowrap, center, flex-start);
+    @extend %modal-block;
 
     .content {
         @include flex-constructor(column nowrap, center, center);
+        padding: 20px 40px;
+
+        &>button {
+            @extend %button;
+        }
     }
 }

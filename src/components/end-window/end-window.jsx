@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearSession } from "../../actions/session";
 import "./end-window-style.scss";
 
-const EndWindow = ({ showEndWindow }) => {
+const EndWindow = ({ initGame }) => {
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
 
   const handleClick = () => {
     dispatch(clearSession());
-    showEndWindow();
+    initGame();
   };
 
   return (

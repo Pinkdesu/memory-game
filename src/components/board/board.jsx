@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Card from "../card/card";
 import { removeCards, hideCards } from "../../actions/active-cards";
 import { toggleCards, toggleCard } from "../../actions/all-cards";
 import { addPoint } from "../../actions/session";
+import Card from "../card/card";
 import "./board-style.scss";
 
 const Board = () => {

@@ -17,10 +17,6 @@ export const setTime = value => ({
   payload: value
 });
 
-export const stopTime = () => ({
-  type: types.STOP_TIME
-});
-
 export const clearSession = () => ({
   type: types.CLEAR_SESSION
 });

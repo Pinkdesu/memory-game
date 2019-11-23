@@ -15,20 +15,21 @@ const Table = () => {
   const session = useSelector(state => state.session);
 
   const initGame = () => {
-    dispatch(addAllCards(CARD_ARRAY));
     dispatch(startGame());
-    start(!startWindowActive);
+    dispatch(addAllCards(CARD_ARRAY));
+    if (startWindowActive) start(false);
   };
 
   useEffect(() => {
-    if (session.points === 1) {
+    if (session.points === 1 && session.isLaunched) {
+      clearTimeout(session.timerId);
       dispatch(finishGame());
     }
   }, [dispatch, session]);
 
   return (
     <div className="table-wrapper">
-      {!(startWindowActive && session.isLaunched) && (
+      {!startWindowActive && session.isLaunched && (
         <>
           <Timer />
           <Board />
@@ -37,7 +38,9 @@ const Table = () => {
 
       {startWindowActive && <StartWindow initGame={initGame} />}
 
-      {!session.isLaunched && <EndWindow />}
+      {!(session.isLaunched || startWindowActive) && (
+        <EndWindow initGame={initGame} />
+      )}
     </div>
   );
 };

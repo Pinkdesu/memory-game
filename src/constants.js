@@ -8,7 +8,6 @@ export const REMOVE_CARDS = "REMOVE_CARDS";
 export const SET_TIMER = "SET_TIMER";
 export const ADD_POINT = "ADD_POINT";
 export const SET_TIME = "SET_TIME";
-export const STOP_TIME = "STOP_TIME";
 export const CLEAR_SESSION = "CLEAR_SESSION";
 export const FINISH_GAME = "FINISH_GAME";
 export const START_GAME = "START_GAME";

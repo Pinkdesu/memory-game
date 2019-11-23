@@ -8,7 +8,7 @@ const Timer = () => {
   const session = useSelector(state => state.session);
 
   const timer = useCallback(
-    (seconds, minutes, hours) => {
+    (seconds = 0, minutes = 0, hours = 0) => {
       const add = () => {
         ++seconds;
 
@@ -35,15 +35,18 @@ const Timer = () => {
         timer(seconds, minutes, hours);
       };
 
-      let id = setTimeout(add, 1000);
-      if (!session.isLaunched) clearTimeout(id);
+      let id = setTimeout(() => add(id), 1000);
+      if (!session.isLaunched) {
+        console.log(id);
+        clearTimeout(id);
+      }
     },
-    [dispatch, session.isLaunched]
+    [dispatch, session]
   );
 
-  useEffect(() => {
-    timer(0, 0, 0);
-  }, [timer]);
+  // useEffect(() => {
+  //   setTimeout(timer, 3000);
+  // }, [timer]);
 
   return (
     <div className="timer-wrapper">

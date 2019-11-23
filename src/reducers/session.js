@@ -24,7 +24,7 @@ const session = (state = initialState, { type, payload }) => {
     case types.SET_TIME:
       return {
         ...state,
-        value: payload
+        value: payload.value
       };
     case types.CLEAR_SESSION:
       return initialState;
