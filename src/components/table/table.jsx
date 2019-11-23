@@ -34,9 +34,11 @@ const Table = () => {
       reset();
       dispatch(setStopWatchValue(timeValue));
       dispatch(finishGame());
-      dispatch(addToRating(session.playerName, timeValue));
+      dispatch(
+        addToRating(session.playerName, { seconds, minutes, hours }, timeValue)
+      );
     }
-  }, [dispatch, session, timeValue, reset]);
+  }, [dispatch, session, timeValue, reset, seconds, minutes, hours]);
 
   const initGame = (player = "") => {
     dispatch(startGame());
