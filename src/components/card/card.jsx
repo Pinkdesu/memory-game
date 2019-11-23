@@ -22,7 +22,7 @@ const Card = ({ cardObject }) => {
       dispatch(setTimer(cardObject.id, timer));
     }
   };
-  console.log("card");
+
   return (
     <div
       className={cardObject.isHidden ? "card-wrapper hidden" : "card-wrapper"}

@@ -5,12 +5,10 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('/table-back.jpg');
+  background: url('/table-back.jpg') no-repeat center center fixed;
   background-size: cover;
-  background-repeat: no-repeat;
 
   & code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

@@ -48,7 +48,6 @@ const Table = () => {
     }
   };
 
-  console.log("table");
   return (
     <div className="table-wrapper">
       {!startWindowActive && session.isLaunched && (
