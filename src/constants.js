@@ -1,4 +1,4 @@
-export const INIT_GAME = "INIT_GAME";
+export const ADD_ALL_CARDS = "ADD_ALL_CARDS";
 export const HIDE_CARDS = "HIDE_CARDS";
 export const TOGGLE_CARD = "TOGGLE_CARD";
 export const TOGGLE_CARDS = "TOGGLE_CARDS";
@@ -7,7 +7,12 @@ export const REMOVE_CARD = "REMOVE_CARD";
 export const REMOVE_CARDS = "REMOVE_CARDS";
 export const SET_TIMER = "SET_TIMER";
 export const ADD_POINT = "ADD_POINT";
-export const SET_TO_ZERO = "SET_TO_ZERO";
+export const SET_TIME = "SET_TIME";
+export const STOP_TIME = "STOP_TIME";
+export const CLEAR_SESSION = "CLEAR_SESSION";
+export const FINISH_GAME = "FINISH_GAME";
+export const START_GAME = "START_GAME";
+
 export const CARD_ARRAY = [
   {
     id: 1,

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setToZero } from "../../actions/session";
+import { clearSession } from "../../actions/session";
 import "./end-window-style.scss";
 
 const EndWindow = ({ showEndWindow }) => {
@@ -8,7 +8,7 @@ const EndWindow = ({ showEndWindow }) => {
   const session = useSelector(state => state.session);
 
   const handleClick = () => {
-    dispatch(setToZero());
+    dispatch(clearSession());
     showEndWindow();
   };
 

@@ -1,8 +1,17 @@
-import { TOGGLE_CARD, TOGGLE_CARDS } from "../constants";
+import * as types from "../constants";
+
+export const addAllCards = cards => {
+  cards.sort(() => 0.5 - Math.random());
+
+  return {
+    type: types.ADD_ALL_CARDS,
+    payload: cards
+  };
+};
 
 export const toggleCard = (id, value) => {
   return {
-    type: TOGGLE_CARD,
+    type: types.TOGGLE_CARD,
     payload: {
       id: id,
       value: value
@@ -12,6 +21,6 @@ export const toggleCard = (id, value) => {
 
 export const toggleCards = () => {
   return {
-    type: TOGGLE_CARDS
+    type: types.TOGGLE_CARDS
   };
 };

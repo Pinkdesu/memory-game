@@ -4,7 +4,7 @@ const initialState = [];
 
 const cardsOnBoard = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.INIT_GAME:
+    case types.ADD_ALL_CARDS:
       return payload;
     case types.HIDE_CARDS:
       return [...state].map(cardObj => {

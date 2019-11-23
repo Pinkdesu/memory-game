@@ -1,14 +1,32 @@
 import * as types from "../constants";
 
-const initialState = { time: 0, points: 0 };
+const initialState = {
+  timerId: 0,
+  value: "00:00:00",
+  points: 0,
+  isLaunched: false
+};
 
 const session = (state = initialState, { type, payload }) => {
   switch (type) {
+    case types.START_GAME:
+      return {
+        ...state,
+        isLaunched: true
+      };
+    case types.FINISH_GAME:
+      return {
+        ...state,
+        isLaunched: false
+      };
     case types.ADD_POINT:
-      let newState = { ...state };
-      newState.points = newState.points + 1;
-      return newState;
-    case types.SET_TO_ZERO:
+      return { ...state, points: state.points + 1 };
+    case types.SET_TIME:
+      return {
+        ...state,
+        value: payload
+      };
+    case types.CLEAR_SESSION:
       return initialState;
     default:
       return state;
