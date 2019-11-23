@@ -1,7 +1,7 @@
 import * as types from "../constants";
 
 const initialState = {
-  timerId: 0,
+  playerName: "",
   value: "00:00:00",
   points: 0,
   isLaunched: false
@@ -12,6 +12,7 @@ const session = (state = initialState, { type, payload }) => {
     case types.START_GAME:
       return {
         ...state,
+        playerName: payload,
         isLaunched: true
       };
     case types.FINISH_GAME:
@@ -24,10 +25,10 @@ const session = (state = initialState, { type, payload }) => {
     case types.SET_TIME:
       return {
         ...state,
-        value: payload.value
+        value: payload
       };
     case types.CLEAR_SESSION:
-      return initialState;
+      return { ...initialState, playerName: state.playerName };
     default:
       return state;
   }

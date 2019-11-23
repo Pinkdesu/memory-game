@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./start-window-style.scss";
 
 const StartWindow = ({ initGame }) => {
+  const [text, setChange] = useState("");
+  const handleChange = e => {
+    setChange(e.target.value);
+  };
+
   return (
     <div className="start-window-wrapper">
       <div className="content">
         <h1>Memory Game</h1>
 
         <div className="lid">
+          <input
+            type="text"
+            placeholder="Имя"
+            onChange={handleChange}
+            value={text}
+          />
+
           <p>Правила игры:</p>
           <ol>
             <li>При нажатии на кнопку “старт” запускается таймер.</li>
@@ -20,7 +32,7 @@ const StartWindow = ({ initGame }) => {
             <li>Игра заканчивается когда все пары карт найдены.</li>
           </ol>
         </div>
-        <button onClick={initGame}>Старт</button>
+        <button onClick={() => initGame(text)}>Старт</button>
       </div>
     </div>
   );

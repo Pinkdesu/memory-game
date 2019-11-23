@@ -1,7 +1,8 @@
 import * as types from "../constants";
 
-export const startGame = () => ({
-  type: types.START_GAME
+export const startGame = playerName => ({
+  type: types.START_GAME,
+  payload: playerName
 });
 
 export const finishGame = () => ({

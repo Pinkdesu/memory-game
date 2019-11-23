@@ -11,6 +11,7 @@ export const SET_TIME = "SET_TIME";
 export const CLEAR_SESSION = "CLEAR_SESSION";
 export const FINISH_GAME = "FINISH_GAME";
 export const START_GAME = "START_GAME";
+export const ADD_TO_RATING = "ADD_TO_RATING";
 
 export const CARD_ARRAY = [
   {

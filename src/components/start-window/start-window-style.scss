@@ -1,14 +1,38 @@
 @import '../../module';
 
 .start-window-wrapper {
-    @include flex-constructor(row nowrap, center, center);
+    @include flex-constructor(column nowrap, flex-start);
     @extend %modal-block;
 
     .content {
         @include flex-constructor(column nowrap, center, center);
+        padding: 20px 40px;
 
-        &>button {
+        & button {
             @extend %button;
+        }
+
+        & input[type="text"] {
+            padding: 5px 10px;
+            margin: 50px 0;
+            vertical-align: top;
+            text-align: center;
+            outline: none;
+            background: 0 0;
+            font-size: 20px;
+            font-weight: 500;
+            color: #fff;
+            background: none;
+            border: none;
+            border-bottom: 1px solid #fff;
+        }
+
+        .lid {
+            @include flex-constructor(column nowrap, flex-start, center);
+
+            & ol {
+                margin-bottom: 50px;
+            }
         }
     }
 }

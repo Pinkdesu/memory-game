@@ -6,7 +6,7 @@ import "./end-window-style.scss";
 const EndWindow = ({ initGame }) => {
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
-
+  const ratingList = useSelector(state => state.ratingList);
   const handleClick = () => {
     dispatch(clearSession());
     initGame();
@@ -18,16 +18,13 @@ const EndWindow = ({ initGame }) => {
         <h1>Ваше время: {session.time}</h1>
 
         <div className="lid">
-          <p>Правила игры:</p>
+          <p>Рейтинг:</p>
           <ol>
-            <li>При нажатии на кнопку “старт” запускается таймер.</li>
-            <li>
-              По нажатию на карточку она открывается, в течении 5 сек нужно
-              открыть вторую карточку, если иконки на паре открытых карт
-              совпадают они удаляются, если нет - пара открытых карт
-              закрываются.
-            </li>
-            <li>Игра заканчивается когда все пары карт найдены.</li>
+            {ratingList.map(({ playerName, time }) => (
+              <li>
+                {playerName} - {time}
+              </li>
+            ))}
           </ol>
         </div>
         <button onClick={handleClick}>Начать заного</button>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CARD_ARRAY } from "../../constants";
 import { addAllCards } from "../../actions/all-cards";
 import { startGame, finishGame } from "../../actions/session";
+import { addToRating } from "../../actions/rating";
 import Board from "../board/board";
 import Timer from "../timer/timer";
 import StartWindow from "../start-window/start-window";
@@ -14,16 +15,16 @@ const Table = () => {
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
 
-  const initGame = () => {
-    dispatch(startGame());
+  const initGame = (player = session.player) => {
+    dispatch(startGame(player));
     dispatch(addAllCards(CARD_ARRAY));
     if (startWindowActive) start(false);
   };
 
   useEffect(() => {
     if (session.points === 1 && session.isLaunched) {
-      clearTimeout(session.timerId);
       dispatch(finishGame());
+      dispatch(addToRating(session.playerName, session.value));
     }
   }, [dispatch, session]);
 
