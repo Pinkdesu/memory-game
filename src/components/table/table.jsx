@@ -30,7 +30,7 @@ const Table = () => {
     (seconds > 9 ? seconds : "0" + seconds);
 
   useEffect(() => {
-    if (session.points === 1 && session.isLaunched) {
+    if (session.points === 18 && session.isLaunched) {
       reset();
       dispatch(setStopWatchValue(timeValue));
       dispatch(finishGame());
