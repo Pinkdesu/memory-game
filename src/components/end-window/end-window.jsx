@@ -15,8 +15,8 @@ const EndWindow = ({ initGame }) => {
   return (
     <div className="end-window-wrapper">
       <div className="content">
-        <h1>Ваше время: {session.time}</h1>
-
+        <h1>Поздравляем, {session.playerName}!</h1>
+        <h2>Ваш результат: {session.value}</h2>
         <div className="lid">
           <p>Рейтинг:</p>
           <ol>
@@ -27,7 +27,7 @@ const EndWindow = ({ initGame }) => {
             ))}
           </ol>
         </div>
-        <button onClick={handleClick}>Начать заного</button>
+        <button onClick={handleClick}>Начать заново</button>
       </div>
     </div>
   );
