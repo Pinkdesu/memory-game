@@ -13,7 +13,6 @@ const session = (state = initialState, { type, payload }) => {
     case types.START_GAME:
       return {
         ...state,
-        playerName: payload,
         isLaunched: true
       };
     case types.FINISH_GAME:
@@ -21,12 +20,14 @@ const session = (state = initialState, { type, payload }) => {
         ...state,
         isLaunched: false
       };
+    case types.ADD_PLAYER_NAME:
+      return { ...state, playerName: payload };
     case types.ADD_POINT:
       return { ...state, points: state.points + 1 };
-    case types.SET_STOPWATCH:
+    case types.SET_STOPWATCH_VALUE:
       return {
         ...state,
-        ...payload
+        value: payload
       };
     case types.CLEAR_SESSION:
       return { ...initialState, playerName: state.playerName };

@@ -7,6 +7,11 @@ const StartWindow = ({ initGame }) => {
     setChange(e.target.value);
   };
 
+  const handleClick = () => {
+    if (text !== "") initGame(text);
+    else alert("Введите игровое имя");
+  };
+
   return (
     <div className="start-window-wrapper">
       <div className="content">
@@ -20,11 +25,12 @@ const StartWindow = ({ initGame }) => {
             value={text}
           />
 
-          <p>Правила игры:</p>
+          <p>Описание игры:</p>
           <ol>
-            <li>При нажатии на кнопку “старт” запускается таймер.</li>
+            <li>Введите своё игровое имя, чтобы отображаться в рейтинге.</li>
+            <li>При нажатии на кнопку “старт” запускается игра.</li>
             <li>
-              По нажатию на карточку она открывается, в течении 5 сек нужно
+              По нажатию на карточку она открывается, в течении 5 сек необходимо
               открыть вторую карточку, если иконки на паре открытых карт
               совпадают они удаляются, если нет - пара открытых карт
               закрываются.
@@ -32,7 +38,7 @@ const StartWindow = ({ initGame }) => {
             <li>Игра заканчивается когда все пары карт найдены.</li>
           </ol>
         </div>
-        <button onClick={() => initGame(text)}>Старт</button>
+        <button onClick={handleClick}>Старт</button>
       </div>
     </div>
   );

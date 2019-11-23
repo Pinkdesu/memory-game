@@ -21,7 +21,7 @@ const EndWindow = ({ initGame }) => {
           <p>Рейтинг:</p>
           <ol>
             {ratingList.map(({ playerName, time }) => (
-              <li>
+              <li key={`${playerName}#${time}`}>
                 {playerName} - {time}
               </li>
             ))}

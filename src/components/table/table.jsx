@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CARD_ARRAY } from "../../constants";
 import { addAllCards } from "../../actions/all-cards";
-import { startGame, finishGame, setStopWatch } from "../../actions/session";
+import {
+  startGame,
+  finishGame,
+  setStopWatchValue,
+  addPlayerName
+} from "../../actions/session";
 import { addToRating } from "../../actions/rating";
 import { useStopwatch } from "react-timer-hook";
 import Board from "../board/board";
@@ -12,7 +17,7 @@ import EndWindow from "../end-window/end-window";
 import "./table-style.scss";
 
 const Table = () => {
-  const [startWindowActive, handleClick] = useState(true);
+  const [startWindowActive, setWindowActive] = useState(true);
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
   const { seconds, minutes, hours, start, reset } = useStopwatch();
@@ -27,17 +32,20 @@ const Table = () => {
   useEffect(() => {
     if (session.points === 1 && session.isLaunched) {
       reset();
-      dispatch(setStopWatch(timeValue));
+      dispatch(setStopWatchValue(timeValue));
       dispatch(finishGame());
-      dispatch(addToRating(session.playerName, session.value));
+      dispatch(addToRating(session.playerName, timeValue));
     }
   }, [dispatch, session, timeValue, reset]);
 
-  const initGame = (player = session.player) => {
-    dispatch(startGame(player));
+  const initGame = (player = "") => {
+    dispatch(startGame());
     dispatch(addAllCards(CARD_ARRAY));
     start();
-    if (startWindowActive) handleClick(false);
+    if (startWindowActive) {
+      dispatch(addPlayerName(player));
+      setWindowActive(false);
+    }
   };
 
   console.log("table");

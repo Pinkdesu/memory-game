@@ -11,5 +11,15 @@
         &>button {
             @extend %button;
         }
+
+        .lid {
+            @include flex-constructor(column nowrap, flex-start, center);
+
+            & ol {
+                margin: 50px 0;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
     }
 }

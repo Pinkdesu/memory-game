@@ -9,16 +9,18 @@ export const finishGame = () => ({
   type: types.FINISH_GAME
 });
 
+export const addPlayerName = name => ({
+  type: types.ADD_PLAYER_NAME,
+  payload: name
+});
+
 export const addPoint = () => ({
   type: types.ADD_POINT
 });
 
-export const setStopWatch = (value, reset) => ({
-  type: types.SET_STOPWATCH,
-  payload: {
-    value: value,
-    reset: reset
-  }
+export const setStopWatchValue = value => ({
+  type: types.SET_STOPWATCH_VALUE,
+  payload: value
 });
 
 export const clearSession = () => ({

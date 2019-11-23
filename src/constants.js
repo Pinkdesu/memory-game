@@ -20,19 +20,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export const ADD_ALL_CARDS = "ADD_ALL_CARDS";
+export const ADD_CARD = "ADD_CARD";
+export const ADD_TO_RATING = "ADD_TO_RATING";
+export const ADD_PLAYER_NAME = "ADD_PLAYER_NAME";
+export const ADD_POINT = "ADD_POINT";
+export const CLEAR_SESSION = "CLEAR_SESSION";
 export const HIDE_CARDS = "HIDE_CARDS";
+export const SET_TIMER = "SET_TIMER";
+export const SET_STOPWATCH_VALUE = "SET_STOPWATCH";
+export const START_GAME = "START_GAME";
+export const FINISH_GAME = "FINISH_GAME";
 export const TOGGLE_CARD = "TOGGLE_CARD";
 export const TOGGLE_CARDS = "TOGGLE_CARDS";
-export const ADD_CARD = "ADD_CARD";
 export const REMOVE_CARD = "REMOVE_CARD";
 export const REMOVE_CARDS = "REMOVE_CARDS";
-export const SET_TIMER = "SET_TIMER";
-export const ADD_POINT = "ADD_POINT";
-export const SET_STOPWATCH = "SET_STOPWATCH";
-export const CLEAR_SESSION = "CLEAR_SESSION";
-export const FINISH_GAME = "FINISH_GAME";
-export const START_GAME = "START_GAME";
-export const ADD_TO_RATING = "ADD_TO_RATING";
 
 export const CARD_ARRAY = [
   {
