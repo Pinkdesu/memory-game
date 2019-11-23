@@ -6,7 +6,7 @@ if (!initialState || !initialState.length) {
   initialState = [];
 }
 
-const ratingList = (state = initialState, { type, payload }) => {
+const ratingList = (state = [], { type, payload }) => {
   switch (type) {
     case types.ADD_TO_RATING:
       return [...state, payload].sort((a, b) => a - b);
