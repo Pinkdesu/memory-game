@@ -2,14 +2,14 @@
 
 .end-window-wrapper {
     @include flex-constructor(row nowrap, center, flex-start);
-    @extend %modal-block;
+    @include modal-block;
 
     .content {
         @include flex-constructor(column nowrap, center, center);
         padding: 20px 40px;
 
         &>button {
-            @extend %button;
+            @include button;
         }
 
         .lid {

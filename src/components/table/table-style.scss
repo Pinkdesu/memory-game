@@ -1,12 +1,38 @@
 @import '../../module';
 
-.table-wrapper {
+@mixin media-table-wrapper {
     @include flex-constructor(column nowrap, center, center);
     position: absolute;
     padding: 20px;
-    width: 800px;
-    height: 700px;
     left: 50%;
-    top: 100px;
-    margin-left: -400px;
+}
+
+@media screen and (min-width: 1200px) {
+    .table-wrapper {
+        @include media-table-wrapper;
+        width: 800px;
+        height: 700px;
+        top: 100px;
+        margin-left: -400px;
+    }
+}
+
+@media screen and (min-width:800px) and (max-width: 1199px) {
+    .table-wrapper {
+        @include media-table-wrapper;
+        width: 600px;
+        height: 500px;
+        top: 100px;
+        margin-left: -300px;
+    }
+}
+
+@media screen and (max-width: 799px) {
+    .table-wrapper {
+        @include media-table-wrapper;
+        width: 400px;
+        height: 300px;
+        top: 30px;
+        margin-left: -200px;
+    }
 }

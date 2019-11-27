@@ -10,7 +10,7 @@
     align-content: $alContent;
 }
 
-%modal-block {
+@mixin modal-block {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -18,14 +18,14 @@
     background-color: rgba(#000, 0.8);
 }
 
-%button {
+@mixin button($fontSize: 17px, $padding...) {
     text-align: center;
     display: block;
-    font-size: normal 17px;
+    font-size: normal $fontSize;
     background: none;
     color: rgba(#fff, 0.5);
     user-select: none;
-    padding: 10px 20px;
+    padding: $padding;
     border: 1px solid rgba(#fff, 0.5);
 
     &:hover {
