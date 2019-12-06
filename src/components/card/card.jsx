@@ -41,4 +41,4 @@ const Card = ({ cardObject }) => {
     </div>
   );
 };
-export default Card;
+export default React.memo(Card);
