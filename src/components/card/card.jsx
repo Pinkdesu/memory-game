@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, removeCard, setTimer } from "../../actions/active-cards";
 import { toggleCard } from "../../actions/all-cards";
@@ -8,6 +8,16 @@ import "./card-style.scss";
 const Card = ({ cardObject }) => {
   const activeCards = useSelector(state => state.activeCards);
   const dispatch = useDispatch();
+  const icon = useMemo(
+    () => (
+      <FontAwesomeIcon
+        icon={cardObject.image}
+        color={cardObject.color}
+        size="2x"
+      />
+    ),
+    [cardObject.color, cardObject.image]
+  );
 
   const handleClick = () => {
     if (!cardObject.isActive && activeCards.length < 2) {
@@ -32,11 +42,7 @@ const Card = ({ cardObject }) => {
         <img src="card-back.jpg" alt="" />
       </div>
       <div className={cardObject.isActive ? "back back-active" : "back"}>
-        <FontAwesomeIcon
-          icon={cardObject.image}
-          color={cardObject.color}
-          size="2x"
-        />
+        {icon}
       </div>
     </div>
   );
